@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organograma - URE Caieiras</title>
+    <title>Organograma 2026 - URE Caieiras</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -29,7 +29,7 @@
 
         .no-print {
             max-width: 1200px;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             display: flex;
             gap: 15px;
             justify-content: center;
@@ -42,7 +42,25 @@
         #searchBar { padding: 10px 25px; width: 300px; border-radius: 25px; border: 1px solid #cbd5e1; outline: none; }
         .btn-print { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
 
-        h1 { text-align: center; color: var(--primary-dark); text-transform: uppercase; margin-top: 20px; font-size: 22px; }
+        /* TÍTULO PRINCIPAL */
+        .main-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .main-header h1 { 
+            color: var(--primary-dark); 
+            text-transform: uppercase; 
+            margin: 0; 
+            font-size: 26px; 
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+        .main-header .subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 5px;
+            font-weight: 500;
+        }
 
         .container { display: flex; flex-direction: column; align-items: center; width: max-content; margin: 0 auto; }
 
@@ -58,7 +76,7 @@
             position: relative;
         }
 
-        .card.top { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; width: 320px; }
+        .card.top { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; width: 340px; }
         
         /* FOTOS */
         .photo-cropper {
@@ -88,18 +106,18 @@
 
         .section-list { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; border-left: 2px solid var(--line-color); padding-left: 20px; }
 
-        /* CORES POR SETOR */
+        /* CORES */
         .blue { border-top: 4px solid var(--blue); }
         .green { border-top: 4px solid var(--green); }
         .purple { border-top: 4px solid var(--purple); }
         .orange { border-top: 4px solid var(--orange); }
         .red { border-top: 4px solid var(--red); }
 
-        /* BLOCOS APOIO (ASURE, ESE, EEC) */
+        /* BLOCOS APOIO */
         .side-blocks { display: flex; gap: 15px; margin: 25px 0; }
-        .card.side { background: #f8fafc; border: 1px dashed #cbd5e1; width: 220px; font-size: 13px; }
+        .card.side { background: #f8fafc; border: 1px dashed #cbd5e1; width: 230px; font-size: 13px; }
 
-        /* RODAPÉ ESCOLAS */
+        /* RODAPÉ */
         .footer-schools {
             margin-top: 60px;
             background: white;
@@ -112,17 +130,17 @@
             max-width: 800px;
             box-shadow: 0 4px 15px rgba(31,122,99,0.1);
             text-transform: uppercase;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         /* TEXTOS */
         .name { font-weight: 700; cursor: help; position: relative; display: inline-block; font-size: 14px; margin-top: 5px; color: #1e293b; }
-        .card.top .name { color: white; }
+        .card.top .name { color: white; font-size: 15px; }
         .role { font-size: 10px; color: #94a3b8; margin-top: 4px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .card.top .role { color: #f1f5f9; }
         .dept-label { font-size: 11px; font-weight: 600; margin-top: 8px; color: #64748b; line-height: 1.2; }
 
-        /* TOOLTIP (BALÃO) */
+        /* TOOLTIP */
         .name::after {
             content: attr(data-contato);
             position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
@@ -132,7 +150,11 @@
         }
         .name:hover::after { visibility: visible; opacity: 1; }
 
-        @media print { .no-print { display: none; } body { zoom: 0.65; } }
+        @media print { 
+            .no-print { display: none; } 
+            body { zoom: 0.6; padding: 0; }
+            .container { margin-top: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -142,10 +164,15 @@
     <button class="btn-print" onclick="window.print()">Exportar PDF</button>
 </div>
 
+<div class="main-header">
+    <h1>Organograma 2026 - Unidade Regional de Ensino de Caieiras</h1>
+    <div class="subtitle">Estrutura Funcional e Administrativa</div>
+</div>
+
 <div class="container">
     
     <div class="card top">
-        <div class="photo-cropper"><img src="sueli.jpg" alt="Foto Sueli"></div>
+        <div class="photo-cropper"><img src="sueli.jpg" alt="Foto Dirigente"></div>
         <span class="name" data-contato="✉ sueli.rego@educacao.sp.gov.br">SUELI RODRIGUES DOS SANTOS REGO</span>
         <div class="role">Dirigente Regional de Ensino</div>
     </div>
@@ -157,7 +184,7 @@
             <span class="name" data-contato="✉ cai.asure@educacao.sp.gov.br">Maria Andreia Lopes</span>
         </div>
         <div class="card side">
-            <strong style="color:var(--primary)">ESE - Supervisão</strong><hr>
+            <strong style="color:var(--primary)">ESE - Supervisão de Ensino</strong><hr>
             <span class="name" data-contato="✉ cai.ese@educacao.sp.gov.br">Equipe de Supervisores de Ensino</span>
         </div>
         <div class="card side">
