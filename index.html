@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organograma - URE Caieiras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1f7a63;
+            --primary-dark: #145c49;
+            --blue: #2c5aa0;
+            --green: #1f7a63;
+            --purple: #7a3fa0;
+            --orange: #d9822b;
+            --red: #c0392b;
+            --bg-body: #f1f5f9;
+            --line-color: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-body);
+            margin: 0;
+            padding: 20px;
+            color: #334155;
+        }
+
+        .no-print {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        #searchBar { padding: 10px 25px; width: 300px; border-radius: 25px; border: 1px solid #cbd5e1; outline: none; }
+
+        .btn-print { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+
+        h1 { text-align: center; color: var(--primary-dark); text-transform: uppercase; margin-top: 20px; font-size: 22px; }
+
+        .container { display: flex; flex-direction: column; align-items: center; width: max-content; margin: 0 auto; }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .card.top { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; width: 320px; }
+        
+        /* FOTOS */
+        .photo-cropper {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+            background: #e2e8f0;
+            border: 2px solid white;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .photo-cropper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* LINHAS */
+        .tree-branch-main { height: 40px; width: 2px; background: var(--line-color); margin: 0 auto; }
+        
+        .level-2-row { display: flex; justify-content: center; gap: 25px; position: relative; padding-top: 20px; }
+        .level-2-row::before {
+            content: ""; position: absolute; top: 0; left: 140px; right: 140px; height: 2px; background: var(--line-color);
+        }
+
+        .service-group { display: flex; flex-direction: column; align-items: center; position: relative; }
+        .service-group::before {
+            content: ""; position: absolute; top: -20px; left: 50%; width: 2px; height: 20px; background: var(--line-color);
+        }
+
+        .section-list { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; border-left: 2px solid var(--line-color); padding-left: 20px; }
+
+        /* CORES */
+        .blue { border-top: 4px solid var(--blue); }
+        .green { border-top: 4px solid var(--green); }
+        .purple { border-top: 4px solid var(--purple); }
+        .orange { border-top: 4px solid var(--orange); }
+        .red { border-top: 4px solid var(--red); }
+
+        /* BLOCOS APOIO */
+        .side-blocks { display: flex; gap: 15px; margin: 25px 0; }
+        .card.side { background: #f8fafc; border: 1px dashed #cbd5e1; width: 220px; font-size: 13px; }
+
+        /* RODAPÉ ESCOLAS */
+        .footer-schools {
+            margin-top: 60px;
+            background: white;
+            padding: 25px 50px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-align: center;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(31,122,99,0.1);
+        }
+
+        /* TEXTOS */
+        .name { font-weight: 700; cursor: help; position: relative; display: inline-block; font-size: 14px; margin-top: 5px; }
+        .role { font-size: 11px; color: #94a3b8; margin-top: 4px; text-transform: uppercase; font-weight: 600; }
+        .card.top .role { color: #f1f5f9; }
+
+        .name::after {
+            content: attr(data-contato);
+            position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
+            background: #1e293b; color: white; padding: 10px; border-radius: 8px;
+            font-size: 11px; white-space: pre; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 100;
+        }
+        .name:hover::after { visibility: visible; opacity: 1; }
+
+        @media print { .no-print { display: none; } body { zoom: 0.65; } }
+    </style>
+</head>
+<body>
+
+<div class="no-print">
+    <input type="text" id="searchBar" placeholder="Pesquisar..." onkeyup="filterCards()">
+    <button class="btn-print" onclick="window.print()">Exportar PDF</button>
+</div>
+
+<div class="container">
+    
+    <div class="card top">
+        <div class="photo-cropper"><img src="sueli.jpg" alt=""></div>
+        <span class="name" data-contato="✉ cai@educacao.sp.gov.br">SUELI RODRIGUES DOS SANTOS REGO</span>
+        <div class="role">Dirigente Regional de Ensino</div>
+    </div>
+
+    <div class="side-blocks">
+        <div class="card side">
+            <strong style="color:var(--primary)">ASURE - Assessoria Técnica</strong><hr>
+            <span class="name" data-contato="✉ cai.asure@educacao.sp.gov.br">Fabia Isabel Lucas</span><br>
+            <span class="name" data-contato="✉ cai.asure@educacao.sp.gov.br">Maria Andreia Lopes</span>
+        </div>
+        <div class="card side">
+            <strong style="color:var(--primary)">ESE - Supervisão</strong><hr>
+            <span class="name" data-contato="✉ cai.ese@educacao.sp.gov.br">Equipe de Supervisores de Ensino</span>
+        </div>
+        <div class="card side">
+            <strong style="color:var(--primary)">EEC - Núcleo Pedagógico</strong><hr>
+            <span class="name" data-contato="✉ cai.eec@educacao.sp.gov.br">Especialistas em Currículo</span>
+        </div>
+    </div>
+
+    <div class="tree-branch-main"></div>
+
+    <div class="level-2-row">
+        
+        <div class="service-group">
+            <div class="card blue">
+                <div class="photo-cropper"><img src="jhonatas.jpg" alt=""></div>
+                <span class="name" data-contato="✉ jhonatas.almeida@educacao.sp.gov.br&#10;📞 (11) 4442-8611">Jhonatas Henrique de Almeida</span>
+                <div class="role">Chefe de Serviço - SEINTEC</div>
+                <div class="name">Serviço de Informações Educacionais e Tecnologia</div>
+            </div>
+            <div class="section-list">
+                <div class="card blue">
+                    <div class="photo-cropper"><img src="gabriel.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ gabriel.deoliveira@educacao.sp.gov.br&#10;📞 (11) 4442-8830">Gabriel Silva de Oliveira</span>
+                    <div class="role">Chefe de Seção - SETEC</div>
+                    <div class="name">Seção de Tecnologia</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card green">
+                <div class="photo-cropper"><img src="gisele.jpg" alt=""></div>
+                <span class="name" data-contato="✉ gisele.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8617">Gisele Figueira Felix Silva</span>
+                <div class="role">Chefe de Serviço - SEGRE</div>
+                <div class="name">Serviço de Gestão da <br />Rede Escolar</div>
+            </div>
+            <div class="section-list">
+                <div class="card green">
+                    <div class="photo-cropper"><img src="enoque.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ enoque.pinto@educacao.sp.gov.br&#10;📞 (11) 4442-8612">Enoque Pinto</span>
+                    <div class="role">Chefe de Seção - SEVESC</div>
+                    <div class="name">Seção de Vida Escolar</div>
+                </div>
+                <div class="card green">
+                    <div class="photo-cropper"><img src="giselle_gama.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ giselle.gama@educacao.sp.gov.br&#10;📞 (11) 4442-8619">Giselle Cristina Gama</span>
+                    <div class="role">Chefe de Seção - SEMAT</div>
+                    <div class="name">Seção de Matrícula</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card purple">
+                <div class="photo-cropper"><img src="rafael.jpg" alt=""></div>
+                <span class="name" data-contato="✉ rafael.marinho01@educacao.sp.gov.br&#10;📞 (11) 4442-8821">Rafael V. S. Marinho</span>
+                <div class="role">Chefe de Serviço - SEPES</div>
+                <div class="name">Serviço de <br />Pessoas</div>
+            </div>
+            <div class="section-list">
+                <div class="card purple">
+                    <div class="photo-cropper"><img src="mary.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ mary.amorim@educacao.sp.gov.br&#10;📞 (11) 4442-8815">Mary G. O. L. Amorim</span>
+                    <div class="role">Chefe de Seção - SEFREP</div>
+                    <div class="name">Seção de Frequência e Pagamento</div>
+                </div>
+                <div class="card purple">
+                    <div class="photo-cropper"><img src="vania.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ vania.pereira01@educacao.sp.gov.br&#10;📞 (11) 4442-8637">Vania Alves Pereira do Amaral</span>
+                    <div class="role">Chefe de Seção - SEAPE</div>
+                    <div class="name">Seção de Administração de Pessoal</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card orange">
+                <div class="photo-cropper"><img src="jeferson.jpg" alt=""></div>
+                <span class="name" data-contato="✉ jeferson.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8609">Jeferson Donato da Silva</span>
+                <div class="role">Chefe de Serviço - SEAFIN</div>
+                <div class="name">Serviço de Administração e Finanças</div>
+            </div>
+            <div class="section-list">
+                <div class="card orange">
+                    <div class="photo-cropper"><img src="angela.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ angela.santos@educacao.sp.gov.br&#10;📞 (11) 4442-8620">Angela Maria Mandelli</span>
+                    <div class="role">Chefe de Seção - SEFIN</div>
+                    <div class="name">Seção de Finanças</div>
+                </div>
+                <div class="card orange">
+                    <div class="photo-cropper"><img src="israel.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ israel.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8606">Israel Camilo da Silva</span>
+                    <div class="role">Chefe de Seção - SECOMSE</div>
+                    <div class="name">Seção de Compras e Serviços</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card red">
+                <div class="photo-cropper"><img src="lilian.jpg" alt=""></div>
+                <span class="name" data-contato="✉ lilian.mello@educacao.sp.gov.br&#10;📞 (11) 4442-8630">Lilian Maciel de Mello</span>
+                <div class="role">Chefe de Serviço - SEOM</div>
+                <div class="name">Serviço de Obras e Manutenção Escolar</div>
+            </div>
+            <div class="section-list">
+                <div class="card red">
+                    <div class="photo-cropper"><img src="angelica.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ angelica.Morita@educacao.sp.gov.br&#10;📞 (11) 4442-8631">Angelica Mayumi Morita</span>
+                    <div class="role">Chefe de Seção - SEFISC</div>
+                    <div class="name">SEFISC – Seção de Fiscalização</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-schools">
+        ESCOLAS DE ENSINO FUNDAMENTAL E MÉDIO E CENTROS ESPECIALIZADOS DE ENSINO
+    </div>
+</div>
+
+<script>
+    function filterCards() {
+        const input = document.getElementById('searchBar').value.toLowerCase();
+        const items = document.querySelectorAll('.card');
+        items.forEach(el => {
+            const text = el.innerText.toLowerCase();
+            el.style.opacity = text.includes(input) ? "1" : "0.2";
+        });
+    }
+</script>
+
+</body>
+</html>
