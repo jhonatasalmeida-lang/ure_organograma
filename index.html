@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organograma 2026 - URE Caieiras</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* DEFINIÇÃO DE VARIÁVEIS (TEMA CLARO POR PADRÃO) */
         :root {
             --primary: #1f7a63;
             --primary-dark: #145c49;
@@ -16,28 +15,8 @@
             --purple: #7a3fa0;
             --orange: #d9822b;
             --red: #c0392b;
-            
-            /* Cores de Interface - Modo Claro */
             --bg-body: #f1f5f9;
-            --bg-card: #ffffff;
-            --bg-header: #ffffff;
-            --text-main: #334155;
-            --text-muted: #64748b;
             --line-color: #cbd5e1;
-            --border-card: #e2e8f0;
-            --shadow: rgba(0,0,0,0.05);
-        }
-
-        /* VARIÁVEIS - MODO ESCURO */
-        body.dark-mode {
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
-            --bg-header: #1e293b;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --line-color: #334155;
-            --border-card: #334155;
-            --shadow: rgba(0,0,0,0.3);
         }
 
         body {
@@ -45,69 +24,40 @@
             background: var(--bg-body);
             margin: 0;
             padding: 20px;
-            color: var(--text-main);
-            transition: background 0.3s, color 0.3s;
+            color: #334155;
         }
 
-        /* BARRA DE FERRAMENTAS */
         .no-print {
             max-width: 1200px;
             margin: 0 auto 20px;
             display: flex;
             gap: 15px;
-            padding: 15px;
             justify-content: center;
-            align-items: center;
-            background: var(--bg-header);
+            background: white;
+            padding: 15px;
             border-radius: 50px;
-            box-shadow: 0 2px 10px var(--shadow);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        #searchBar { 
-            padding: 10px 25px; 
-            width: 300px; 
-            border-radius: 25px; 
-            border: 1px solid var(--line-color); 
-            outline: none; 
-            background: var(--bg-body);
-            color: var(--text-main);
-        }
-
-        .btn-action { 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 10px 20px; 
-            border-radius: 25px; 
-            cursor: pointer; 
-            font-weight: 600;
-            transition: filter 0.2s;
-        }
-        
-        .btn-action:hover { filter: brightness(1.2); }
-
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--line-color);
-            font-size: 20px;
-            cursor: pointer;
-            padding: 5px 12px;
-            border-radius: 50%;
-            color: var(--text-main);
-        }
+        #searchBar { padding: 10px 25px; width: 300px; border-radius: 25px; border: 1px solid #cbd5e1; outline: none; }
+        .btn-print { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; }
 
         /* TÍTULO PRINCIPAL */
-        .main-header { text-align: center; margin-bottom: 30px; }
+        .main-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         .main-header h1 { 
-            color: var(--primary); 
+            color: var(--primary-dark); 
             text-transform: uppercase; 
             margin: 0; 
             font-size: 26px; 
+            letter-spacing: 1px;
             font-weight: 800;
         }
         .main-header .subtitle {
             font-size: 14px;
-            color: var(--text-muted);
+            color: #64748b;
             margin-top: 5px;
             font-weight: 500;
         }
@@ -116,28 +66,34 @@
 
         /* CARDS */
         .card {
-            background: var(--bg-card);
+            background: white;
             border-radius: 12px;
             padding: 15px;
             text-align: center;
             width: 250px;
-            box-shadow: 0 4px 10px var(--shadow);
-            border: 1px solid var(--border-card);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
             position: relative;
-            transition: transform 0.2s, background 0.3s;
         }
 
         .card.top { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; width: 340px; }
         
+        /* FOTOS */
         .photo-cropper {
-            width: 65px; height: 65px; border-radius: 50%; overflow: hidden;
-            margin: 0 auto 10px; background: var(--line-color); border: 2px solid white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+            background: #e2e8f0;
+            border: 2px solid white;
             display: flex; align-items: center; justify-content: center;
         }
         .photo-cropper img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* LINHAS E ESTRUTURA */
+        /* LINHAS */
         .tree-branch-main { height: 40px; width: 2px; background: var(--line-color); margin: 0 auto; }
+        
         .level-2-row { display: flex; justify-content: center; gap: 25px; position: relative; padding-top: 20px; }
         .level-2-row::before {
             content: ""; position: absolute; top: 0; left: 140px; right: 140px; height: 2px; background: var(--line-color);
@@ -150,43 +106,62 @@
 
         .section-list { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; border-left: 2px solid var(--line-color); padding-left: 20px; }
 
-        /* CORES DAS BORDAS */
+        /* CORES */
         .blue { border-top: 4px solid var(--blue); }
         .green { border-top: 4px solid var(--green); }
         .purple { border-top: 4px solid var(--purple); }
         .orange { border-top: 4px solid var(--orange); }
         .red { border-top: 4px solid var(--red); }
 
+        /* BLOCOS APOIO */
         .side-blocks { display: flex; gap: 15px; margin: 25px 0; }
-        .card.side { background: var(--bg-card); border: 1px dashed var(--line-color); width: 230px; font-size: 13px; }
+        .card.side { background: #f8fafc; border: 1px dashed #cbd5e1; width: 230px; font-size: 13px; }
 
+        /* RODAPÉ */
         .footer-schools {
-            margin-top: 60px; background: var(--bg-card); padding: 25px 50px;
-            border-radius: 15px; border: 2px solid var(--primary); color: var(--primary);
-            font-weight: 700; text-align: center; max-width: 800px;
-            box-shadow: 0 4px 15px var(--shadow); text-transform: uppercase;
+            margin-top: 60px;
+            background: white;
+            padding: 25px 50px;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-align: center;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(31,122,99,0.1);
+            text-transform: uppercase;
+            line-height: 1.5;
         }
 
         /* TEXTOS */
-        .name { font-weight: 700; cursor: help; position: relative; font-size: 14px; margin-top: 5px; color: var(--text-main); }
-        .card.top .name { color: white; }
-        .role { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; font-weight: 600; }
-        .card.top .role { color: #e2e8f0; }
-        .dept-label { font-size: 11px; font-weight: 600; margin-top: 8px; color: var(--text-muted); line-height: 1.2; }
+        .name { font-weight: 700; cursor: help; position: relative; display: inline-block; font-size: 14px; margin-top: 5px; color: #1e293b; }
+        .card.top .name { color: white; font-size: 15px; }
+        .role { font-size: 10px; color: #94a3b8; margin-top: 4px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        .card.top .role { color: #f1f5f9; }
+        .dept-label { font-size: 11px; font-weight: 600; margin-top: 8px; color: #64748b; line-height: 1.2; }
+
+        /* TOOLTIP */
+        .name::after {
+            content: attr(data-contato);
+            position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%);
+            background: #1e293b; color: white; padding: 10px; border-radius: 8px;
+            font-size: 11px; white-space: pre; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 100;
+            font-weight: 400; text-align: left;
+        }
+        .name:hover::after { visibility: visible; opacity: 1; }
 
         @media print { 
             .no-print { display: none; } 
-            body { zoom: 0.6; background: white !important; color: black !important; }
-            .card { border: 1px solid #ccc !important; box-shadow: none !important; }
+            body { zoom: 0.6; padding: 0; }
+            .container { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
 <div class="no-print">
-    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar Tema">🌓</button>
     <input type="text" id="searchBar" placeholder="Pesquisar por nome ou cargo..." onkeyup="filterCards()">
-    <button class="btn-action" onclick="window.print()">Exportar PDF</button>
+    <button class="btn-print" onclick="window.print()">Exportar PDF</button>
 </div>
 
 <div class="main-header">
@@ -204,16 +179,16 @@
 
     <div class="side-blocks">
         <div class="card side">
-            <strong style="color:var(--primary)">ASURE - Assessoria Técnica</strong><hr style="border:0; border-top:1px solid var(--line-color)">
+            <strong style="color:var(--primary)">ASURE - Assessoria Técnica</strong><hr>
             <span class="name" data-contato="✉ cai.asure@educacao.sp.gov.br">Fabia Isabel Lucas</span><br>
             <span class="name" data-contato="✉ cai.asure@educacao.sp.gov.br">Maria Andreia Lopes</span>
         </div>
         <div class="card side">
-            <strong style="color:var(--primary)">ESE - Supervisão de Ensino</strong><hr style="border:0; border-top:1px solid var(--line-color)">
+            <strong style="color:var(--primary)">ESE - Supervisão de Ensino</strong><hr>
             <span class="name" data-contato="✉ cai.ese@educacao.sp.gov.br">Equipe de Supervisores de Ensino</span>
         </div>
         <div class="card side">
-            <strong style="color:var(--primary)">EEC - Núcleo Pedagógico</strong><hr style="border:0; border-top:1px solid var(--line-color)">
+            <strong style="color:var(--primary)">EEC - Núcleo Pedagógico</strong><hr>
             <span class="name" data-contato="✉ cai.eec@educacao.sp.gov.br">Especialistas em Currículo</span>
         </div>
     </div>
@@ -225,16 +200,16 @@
         <div class="service-group">
             <div class="card blue">
                 <div class="photo-cropper"><img src="jhonatas.jpg" alt=""></div>
-                <span class="name" data-contato="✉ jhonatas.almeida@educacao.sp.gov.br">Jhonatas Henrique de Almeida</span>
+                <span class="name" data-contato="✉ jhonatas.almeida@educacao.sp.gov.br&#10;📞 (11) 4442-8611">Jhonatas Henrique de Almeida</span>
                 <div class="role">Chefe de Serviço</div>
-                <div class="dept-label">SEINTEC - Informações e Tecnologia</div>
+                <div class="dept-label">SEINTEC - Serviço de Informações Educacionais e Tecnologia</div>
             </div>
             <div class="section-list">
                 <div class="card blue">
                     <div class="photo-cropper"><img src="gabriel.jpg" alt=""></div>
-                    <span class="name">Gabriel Silva de Oliveira</span>
+                    <span class="name" data-contato="✉ gabriel.deoliveira@educacao.sp.gov.br&#10;📞 (11) 4442-8830">Gabriel Silva de Oliveira</span>
                     <div class="role">Chefe de Seção</div>
-                    <div class="dept-label">SETEC - Tecnologia</div>
+                    <div class="dept-label">SETEC - Seção de Tecnologia</div>
                 </div>
             </div>
         </div>
@@ -242,15 +217,22 @@
         <div class="service-group">
             <div class="card green">
                 <div class="photo-cropper"><img src="gisele.jpg" alt=""></div>
-                <span class="name">Gisele Figueira Felix Silva</span>
+                <span class="name" data-contato="✉ gisele.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8617">Gisele Figueira Felix Silva</span>
                 <div class="role">Chefe de Serviço</div>
-                <div class="dept-label">SEGRE - Gestão de Rede</div>
+                <div class="dept-label">SEGRE - Serviço de Gestão da Rede Escolar</div>
             </div>
             <div class="section-list">
                 <div class="card green">
-                    <span class="name">Enoque Pinto</span>
+                    <div class="photo-cropper"><img src="enoque.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ enoque.pinto@educacao.sp.gov.br&#10;📞 (11) 4442-8612">Enoque Pinto</span>
                     <div class="role">Chefe de Seção</div>
-                    <div class="dept-label">SEVESC - Vida Escolar</div>
+                    <div class="dept-label">SEVESC - Seção de Vida Escolar</div>
+                </div>
+                <div class="card green">
+                    <div class="photo-cropper"><img src="giselle_gama.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ giselle.gama@educacao.sp.gov.br&#10;📞 (11) 4442-8619">Giselle Cristina Gama</span>
+                    <div class="role">Chefe de Seção</div>
+                    <div class="dept-label">SEMAT - Seção de Matrícula</div>
                 </div>
             </div>
         </div>
@@ -258,15 +240,62 @@
         <div class="service-group">
             <div class="card purple">
                 <div class="photo-cropper"><img src="rafael.jpg" alt=""></div>
-                <span class="name">Rafael V. S. Marinho</span>
+                <span class="name" data-contato="✉ rafael.marinho01@educacao.sp.gov.br&#10;📞 (11) 4442-8821">Rafael V. S. Marinho</span>
                 <div class="role">Chefe de Serviço</div>
-                <div class="dept-label">SEPES - Pessoas</div>
+                <div class="dept-label">SEPES - Serviço de Pessoas</div>
             </div>
             <div class="section-list">
                 <div class="card purple">
-                    <span class="name">Mary G. O. L. Amorim</span>
+                    <div class="photo-cropper"><img src="mary.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ mary.amorim@educacao.sp.gov.br&#10;📞 (11) 4442-8815">Mary G. O. L. Amorim</span>
                     <div class="role">Chefe de Seção</div>
-                    <div class="dept-label">SEFREP - Pagamento</div>
+                    <div class="dept-label">SEFREP - Seção de Frequência e Pagamento</div>
+                </div>
+                <div class="card purple">
+                    <div class="photo-cropper"><img src="vania.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ vania.pereira01@educacao.sp.gov.br&#10;📞 (11) 4442-8637">Vania Alves Pereira do Amaral</span>
+                    <div class="role">Chefe de Seção</div>
+                    <div class="dept-label">SEAPE - Seção de Administração de Pessoal</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card orange">
+                <div class="photo-cropper"><img src="jeferson.jpg" alt=""></div>
+                <span class="name" data-contato="✉ jeferson.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8609">Jeferson Donato da Silva</span>
+                <div class="role">Chefe de Serviço</div>
+                <div class="dept-label">SEAFIN - Serviço de Administração e Finanças</div>
+            </div>
+            <div class="section-list">
+                <div class="card orange">
+                    <div class="photo-cropper"><img src="angela.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ angela.santos@educacao.sp.gov.br&#10;📞 (11) 4442-8620">Angela Maria Mandelli</span>
+                    <div class="role">Chefe de Seção</div>
+                    <div class="dept-label">SEFIN - Seção de Finanças</div>
+                </div>
+                <div class="card orange">
+                    <div class="photo-cropper"><img src="israel.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ israel.silva@educacao.sp.gov.br&#10;📞 (11) 4442-8606">Israel Camilo da Silva</span>
+                    <div class="role">Chefe de Seção</div>
+                    <div class="dept-label">SECOMSE - Seção de Compras e Serviços</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-group">
+            <div class="card red">
+                <div class="photo-cropper"><img src="lilian.jpg" alt=""></div>
+                <span class="name" data-contato="✉ lilian.mello@educacao.sp.gov.br&#10;📞 (11) 4442-8630">Lilian Maciel de Mello</span>
+                <div class="role">Chefe de Serviço</div>
+                <div class="dept-label">SEOM - Serviço de Obras e Manutenção Escolar</div>
+            </div>
+            <div class="section-list">
+                <div class="card red">
+                    <div class="photo-cropper"><img src="angelica.jpg" alt=""></div>
+                    <span class="name" data-contato="✉ angelica.Morita@educacao.sp.gov.br&#10;📞 (11) 4442-8631">Angelica Mayumi Morita</span>
+                    <div class="role">Chefe de Seção</div>
+                    <div class="dept-label">SEFISC - Seção de Fiscalização</div>
                 </div>
             </div>
         </div>
@@ -279,32 +308,13 @@
 </div>
 
 <script>
-    // Função de Busca
     function filterCards() {
         const input = document.getElementById('searchBar').value.toLowerCase();
         const items = document.querySelectorAll('.card');
         items.forEach(el => {
             const text = el.innerText.toLowerCase();
-            el.style.opacity = text.includes(input) ? "1" : "0.1";
-            el.style.transform = text.includes(input) ? "scale(1)" : "scale(0.95)";
+            el.style.opacity = text.includes(input) ? "1" : "0.2";
         });
-    }
-
-    // Função de Alternar Tema
-    function toggleTheme() {
-        const body = document.body;
-        body.classList.toggle('dark-mode');
-        
-        // Salvar preferência no navegador
-        const isDark = body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
-
-    // Carregar tema salvo ao iniciar
-    window.onload = () => {
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
     }
 </script>
 
